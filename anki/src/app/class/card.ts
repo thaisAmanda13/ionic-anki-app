@@ -46,7 +46,6 @@ export class Card {
         this._categoriaCard = _categoriaCard
     }
 
-    
     public getPergunta() : string {
         return this._pergunta 
     }
@@ -71,6 +70,4 @@ export class Card {
     public getCategoriaCard() : number {
         return this._categoriaCard 
     }
-
-
 }
