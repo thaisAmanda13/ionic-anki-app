@@ -1,0 +1,7 @@
+{
+  "name": "anki",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
