@@ -35,9 +35,4 @@ export class CardService {
     return false
   }
 
-
-
-
 }
-
-
