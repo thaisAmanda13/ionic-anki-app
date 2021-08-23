@@ -10,7 +10,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'show-card',
+    loadChildren: () => import('./pages/show-card/show-card.module').then( m => m.ShowCardPageModule)
   },
+
 ];
 
 @NgModule({
