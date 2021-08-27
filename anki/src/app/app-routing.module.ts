@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'show-card',
     loadChildren: () => import('./pages/show-card/show-card.module').then( m => m.ShowCardPageModule)
   },
+  {
+    path: 'cadastrar-usuario',
+    loadChildren: () => import('./cadastrar-usuario/cadastrar-usuario.module').then( m => m.CadastrarUsuarioPageModule)
+  },
 
 ];
 

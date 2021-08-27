@@ -9,10 +9,8 @@ import { User } from './../../class/User';
 export class ShowCardPage implements OnInit {
 
   constructor() {
-    const u1=new User(1,"William Nahirnei Lopes",new Date(2021,10,10))
-    console.log("ASDASDASD")
-    console.log(u1)
-   }
+    const u1 = new User("William Nahirnei Lopes", new Date(2021,10,10))
+  }
 
   ngOnInit() {
   }
