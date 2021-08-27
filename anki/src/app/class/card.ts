@@ -23,7 +23,7 @@ export class Card {
         this._dificuldade = _dificuldade 
         this._categoriaCard = _categoriaCard 
         this._id = new Date().getTime()
-     }
+    }
 
     public setPergunta(_pergunta : string): void {
         this._pergunta = _pergunta
