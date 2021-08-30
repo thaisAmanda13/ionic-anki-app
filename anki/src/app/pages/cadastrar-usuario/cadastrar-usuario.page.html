@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      <ion-icon name="person-add-outline"></ion-icon> Cadastrar
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-list>
+
+        <ion-item>
+          <ion-icon name="people-outline" slot="start"></ion-icon>
+          <ion-label expand="block" position="floating">Nome</ion-label>
+          <ion-input placeholder="Nome Sobrenome" type="text" [(ngModel)]="_name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+          <ion-label position="left">Data de Nascimento</ion-label>
+          <ion-input type="date" [(ngModel)]="_birthDate"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-content>
+    <ion-item>
+      <ion-col size="9">
+        <ion-row>
+          <ion-button expand="block" color="danger">Cancelar</ion-button>
+          <ion-button expand="block" color="success" (click)="cadastrarUsuario()">Salvar</ion-button>
+        </ion-row>
+      </ion-col>
+    </ion-item>
+  </ion-content>
+</ion-content>
