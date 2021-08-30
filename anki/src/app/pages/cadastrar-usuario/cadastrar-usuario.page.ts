@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../class/User';
-import { UserService } from '../services/user.service';
+import { User } from '../../class/User';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-cadastrar-usuario',
@@ -21,6 +21,6 @@ export class CadastrarUsuarioPage implements OnInit {
   }
   cadastrarUsuario() 
   {
-    this.UserService.createUser(new User(this._name, this._birthDate));
+    this.UserService.createUser(this._name, this._birthDate);
   }
 }
