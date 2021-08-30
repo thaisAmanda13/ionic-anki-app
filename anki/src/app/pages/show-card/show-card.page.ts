@@ -12,7 +12,7 @@ export class ShowCardPage implements OnInit {
   private _cards : Card[] = this.cardService.getCardsRevisao()
   public _showResposta : boolean = false
   private _cardAtualIndex : number = 0
-  
+  private _fim : boolean = false
   private _card : Card = this._cards[this._cardAtualIndex]
 
   constructor(private cardService : CardService) {
@@ -24,11 +24,13 @@ export class ShowCardPage implements OnInit {
     this.proximoCard()
   }
   proximoCard(): void {
-    console.log(this._cards.length, this._cardAtualIndex)
-    if(this._cardAtualIndex < this._cards.length){
+    
+    if(this._cardAtualIndex < this._cards.length -1){
       this._cardAtualIndex ++
       this._card = this._cards[this._cardAtualIndex]
-      console.log(this._card)
+      
+    }else{
+      this._fim = true
     }
   }
   ngOnInit() {

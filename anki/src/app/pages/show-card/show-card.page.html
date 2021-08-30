@@ -4,39 +4,47 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
- 
-  <ion-card   >
+    <ion-content  *ngIf="! _fim">
     
-  
-    <ion-card-header>
-      <div *ngIf="! _showResposta">
-        <ion-card-title  >{{_card.getPergunta()}}</ion-card-title>
-        <ion-card-subtitle >Dificuldade:  {{_card.getDificuldade()}}</ion-card-subtitle>
-      </div>
-      <ion-card-title *ngIf=" _showResposta">{{_card.getResposta()}}</ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content>
-      <ion-button *ngIf="! _showResposta" expand="block" (click) = "showResposta()">Resposta <ion-icon name="eye"></ion-icon></ion-button>
-    </ion-card-content>
-  </ion-card>
-  
-</ion-content>
-
-<ion-footer expand="block">
-  <ion-toolbar center>
-    <ion-row >
-      <ion-col cols="4"> 
-        <ion-button color="danger" (click) = "setFeedback(1)">Errei <ion-icon name="close"></ion-icon></ion-button>
-      </ion-col>
-      <ion-col cols="4"> 
-        <ion-button (click) = "setFeedback(2)">Dificil <ion-icon name="sad"></ion-icon></ion-button>
-      </ion-col>
-      <ion-col cols="4"> 
+      <ion-card  >
         
-        <ion-button (click) = "setFeedback(3)" color="success">Fácil <ion-icon name="happy"></ion-icon></ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-toolbar>
-</ion-footer>
+      
+        <ion-card-header>
+          <div *ngIf="! _showResposta">
+            <ion-card-title  >{{_card.getPergunta()}}</ion-card-title>
+            <ion-card-subtitle >Dificuldade:  {{_card.getDificuldade()}}</ion-card-subtitle>
+          </div>
+          <ion-card-title *ngIf=" _showResposta">{{_card.getResposta()}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <ion-button *ngIf="! _showResposta" expand="block" (click) = "showResposta()">Resposta <ion-icon name="eye"></ion-icon></ion-button>
+        </ion-card-content>
+      </ion-card>
+      
+    </ion-content>
+
+    <ion-footer expand="block" *ngIf="! _fim">
+      <ion-toolbar center>
+        <ion-row >
+          <ion-col cols="4"> 
+            <ion-button color="danger" (click) = "setFeedback(1)">Errei <ion-icon name="close"></ion-icon></ion-button>
+          </ion-col>
+          <ion-col cols="4"> 
+            <ion-button (click) = "setFeedback(2)">Dificil <ion-icon name="sad"></ion-icon></ion-button>
+          </ion-col>
+          <ion-col cols="4"> 
+            
+            <ion-button (click) = "setFeedback(3)" color="success">Fácil <ion-icon name="happy"></ion-icon></ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+    </ion-footer>
+
+
+<ion-content *ngIf="_fim">
+  <ion-card>
+    <ion-img width="80" height="80" src="https://i.pinimg.com/originals/fa/1e/87/fa1e8797c1e249df2d42ce1718af4662.png"></ion-img>
+    <h3 expand="block"> Por hoje não tem mais nada para revisão ! <ion-icon name="happy"></ion-icon></h3>
+  </ion-card>
+</ion-content> 
