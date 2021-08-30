@@ -18,7 +18,7 @@ export class CadastrarUsuarioPage implements OnInit {
 
   ngOnInit() {
   }
-  cadastrarUsuario() 
+  cadastrarUsuario() :void
   {
     this.UserService.createUser(this._name, this._birthDate);
   }
