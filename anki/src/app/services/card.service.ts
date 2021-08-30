@@ -7,7 +7,10 @@ export class CardService {
   private _cards : Card[] = []
   private _cardsRevisao : Card[] = []
   constructor() {
-
+    this._cards.push(new Card('aaaa', 'bbbbbb',false, new Date(), 1, 1))
+    this._cards.push(new Card('a332', 'bb33bb',false, new Date(), 1, 1))
+    this._cards.push(new Card('a444a', 'bbsabb',false, new Date(), 1, 1))
+    this._cards.push(new Card('aa33aa', 'bbsbbbb',false, new Date(), 1, 1))
   }
  
   public getCardsRevisao() : Card[]{
@@ -18,6 +21,7 @@ export class CardService {
         this._cardsRevisao.push(this._cards[i])
       }
     }
+
     return this._cardsRevisao
   }
 
@@ -48,10 +52,18 @@ export class CardService {
         if(dificuldadeId == 1){  
           data = new Date(data.setDate(data.getDate() + 1)) 
         }else{
-          data = new Date(data.setDate(data.getDate() + 2))
+          if(dificuldadeId == 2){
+            data = new Date(data.setDate(data.getDate() + 2))
+          }  
+          else{
+            data = new Date(data.setDate(data.getDate() + 3))
+            
+          }
         }
-        return this._cards[i].setDataRevisao(String(new Date(data)))
+        return this._cards[i].setDataRevisao(new Date(data))
       }
+
+      
     }
   }
 }
