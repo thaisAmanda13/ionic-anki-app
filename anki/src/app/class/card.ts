@@ -2,7 +2,7 @@ export class Card {
     private _pergunta : string
     private _resposta : string
     private _visto : boolean
-    private _dataRevisao : string
+    private _dataRevisao : Date
     private _dificuldade : number
     private _categoriaCard : number
     private _id : number 
@@ -11,7 +11,7 @@ export class Card {
         _pergunta : string,
         _resposta : string,
         _visto : boolean,
-        _dataRevisao : string,
+        _dataRevisao : Date,
         _dificuldade : number,
         _categoriaCard : number,
         
@@ -36,7 +36,7 @@ export class Card {
     public setVisto(_visto : boolean) : void {
         this._visto = _visto
     }
-    public setDataRevisao(_dataRevisao : string) : void {
+    public setDataRevisao(_dataRevisao : Date) : void {
         this._dataRevisao = _dataRevisao
     }
     public setDificuldade(_dificuldade : number) : void{
@@ -61,7 +61,7 @@ export class Card {
     public getVisto() : boolean {
         return this._visto 
     }
-    public getDataRevisao() : string {
+    public getDataRevisao() : Date {
         return this._dataRevisao 
     }
     public getDificuldade() : number {
