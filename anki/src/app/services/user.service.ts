@@ -13,11 +13,19 @@ export class UserService {
     this._user = new User(name, birthDate)
   }
 
+  public verifyAge(birthDate:Date)
+  { 
+    if (birthDate != new Date()) 
+      return true;
+
+    return false;
+  }
+
   public getUser():User{
-    return this._user
+    return this._user;
   }
   public updateUser(name:string, birthDate:Date){
-    this._user.setName(name)
-    this._user.setBirthDate(birthDate)
+    this._user.setName(name);
+    this._user.setBirthDate(birthDate);
   }
 }

@@ -24,7 +24,7 @@ export class User {
         if(birthDate!=null&&birthDate!=undefined)
             this._birthDate=birthDate
         else
-            throw"Valor nulo ou indefinido"
+            throw"Campo nascimento nulo ou indefinido"
     }
 
     public getId() : number
