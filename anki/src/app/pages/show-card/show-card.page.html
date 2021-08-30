@@ -5,8 +5,12 @@
 </ion-header>
 
 <ion-content>
-
-  <ion-card>
+ 
+  <ion-card *ngFor ="let data of Data" >
+    <div>
+      {{data.name}}{{data.age}}
+    </div>
+  
     <ion-card-header>
       <ion-item *ngFor="let card of _cards"></ion-item>
       <ion-card-title></ion-card-title>
