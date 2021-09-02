@@ -66,4 +66,13 @@ export class CardService {
       
     }
   }
+
+  getCardPorId(idCard):Card{
+    for(let i = 0;  i < this._cards.length; i++){
+      if(this._cards[i].getId() == idCard)
+        return this._cards[i]
+    }
+    return null 
+  }
+
 }
