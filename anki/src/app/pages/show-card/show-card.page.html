@@ -1,52 +1,109 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Meus Cards <ion-icon name="copy-outline"></ion-icon></ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-app>
+  
+  <ion-menu side="start" content-id="main-content" >
 
-    <ion-content  *ngIf="! _fim">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Meus Cards <ion-icon name="copy-outline"></ion-icon></ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+
+        <ion-item>
+          <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+          <ion-label >Editar perfil </ion-label>
+        </ion-item>
+
+        <ion-item href="/show-card">
+          <ion-icon slot="start" name="albums-outline"></ion-icon>
+          <ion-label>Revisar cards</ion-label>
+        </ion-item>
+      
+        <ion-item>
+          <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+          <ion-label>Novo card</ion-label>
+        </ion-item>
+      
+      </ion-list>
+    </ion-content>
+
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-header>
+
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Anki-Clone</ion-title>
+      </ion-toolbar>
+
+    </ion-header>
     
-      <ion-card  >
-        <ion-card-header>
-          <div *ngIf="! _showResposta">
-            <ion-card-title  >{{_card.getPergunta()}}</ion-card-title>
-            <ion-card-subtitle >Dificuldade:  {{_card.getDificuldade()}}</ion-card-subtitle>
-          </div>
-          <ion-card-title *ngIf=" _showResposta">{{_card.getResposta()}}</ion-card-title>
+    <ion-content *ngIf="!_logado">
+      <ion-card>
+
+        <ion-card-header> 
+          <ion-card-title>Crie uma conta no Anki-clone</ion-card-title>
         </ion-card-header>
       
         <ion-card-content>
-          <ion-button *ngIf="! _showResposta" expand="block" (click) = "showResposta()">Resposta <ion-icon name="eye"></ion-icon></ion-button>
+          <ion-button href="/cadastrar-usuario" >Criar conta</ion-button>
         </ion-card-content>
-        <ion-footer expand="block" *ngIf="! _fim">
-          <ion-toolbar center>
-            <ion-row>
-              <ion-col cols="4">
-                <ion-button color="danger" (click)="setFeedback(1)">Errei <ion-icon name="close"></ion-icon>
-                </ion-button>
-              </ion-col>
-              <ion-col cols="4">
-                <ion-button (click)="setFeedback(2)">Dificil <ion-icon name="sad"></ion-icon>
-                </ion-button>
-              </ion-col>
-              <ion-col cols="4">
-        
-                <ion-button (click)="setFeedback(3)" color="success">Fácil <ion-icon name="happy"></ion-icon>
-                </ion-button>
-              </ion-col>
-            </ion-row>
-          </ion-toolbar>
-        </ion-footer>
 
       </ion-card>
-      
     </ion-content>
 
-<ion-content *ngIf="_fim">
-  <ion-card>
-    <ion-img width="80" height="80" src="https://i.pinimg.com/originals/fa/1e/87/fa1e8797c1e249df2d42ce1718af4662.png"></ion-img>
+  <ion-content  *ngIf="! _fim">
+
+    <ion-card >
+
+      <ion-card-header>
+        <div *ngIf="! _showResposta">
+          <ion-card-title  >{{_card.getPergunta()}}</ion-card-title>
+          <ion-card-subtitle >Dificuldade:  {{_card.getDificuldade()}}</ion-card-subtitle>
+        </div>
+        <ion-card-title *ngIf=" _showResposta">{{_card.getResposta()}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-button *ngIf="! _showResposta" expand="block" (click) = "showResposta()">Resposta <ion-icon name="eye"></ion-icon></ion-button>
+      </ion-card-content>
+
+    </ion-card>
+    
+  </ion-content>
+
+  <ion-content *ngIf="_fim">
+    <ion-card>
+      <ion-img width="80" height="80" src="https://i.pinimg.com/originals/fa/1e/87/fa1e8797c1e249df2d42ce1718af4662.png"></ion-img>
       <div class="ion-text-center">
         <h3 expand="block"> Por hoje não tem mais nada para revisão! <ion-icon name="happy-outline"></ion-icon></h3>
       </div>
-      </ion-card>
-</ion-content> 
+    </ion-card>
+  </ion-content> 
+
+  <ion-footer expand="block" *ngIf="! _fim">
+    <ion-toolbar center>
+      <ion-row>
+        <ion-col cols="4">
+          <ion-button color="danger" (click)="setFeedback(1)">Errei <ion-icon name="close"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col cols="4">
+          <ion-button (click)="setFeedback(2)">Dificil <ion-icon name="sad"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col cols="4">
+
+          <ion-button (click)="setFeedback(3)" color="success">Fácil <ion-icon name="happy"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>
+
+</ion-app>

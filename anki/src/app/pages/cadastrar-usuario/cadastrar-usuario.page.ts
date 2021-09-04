@@ -20,10 +20,12 @@ export class CadastrarUsuarioPage implements OnInit {
   }
   cadastrarUsuario() :void
   {
-    if (this.UserService.verifyAge(this._birthDate))
+    if (this.UserService.verifyAge(this._birthDate)){
       this.UserService.createUser(this._name, this._birthDate);
-    //else
-      //incluir alert de falha
+      this.router.navigate(['home'])
+    }
+    else
+      console.log("falha")
   }
 
   cancelar(): void 
