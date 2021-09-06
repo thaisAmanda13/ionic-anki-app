@@ -17,7 +17,12 @@ const routes: Routes = [
   {
     path: 'cadastrar-usuario',
     loadChildren: () => import('./pages/cadastrar-usuario/cadastrar-usuario.module').then(m => m.CadastrarUsuarioPageModule)
-  }, {
+  }, 
+  {
+    path: 'editar-perfil',
+    loadChildren: () => import('./pages/editar-perfil/editar-perfil.module').then(m => m.EditarPerfilPageModule)
+  },
+  {
     path: 'cadastrar-card',
     loadChildren: () => import('./pages/cadastrar-card/cadastrar-card.module').then(m => m.CadastrarCardPageModule)
   },
