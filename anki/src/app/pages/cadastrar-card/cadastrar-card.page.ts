@@ -3,6 +3,7 @@ import {Card} from '../../class/card'
 import {Baralho} from '../../class/baralho'
 import {CardService} from '../../services/card.service'
 import {BaralhoService} from '../../services/baralho.service'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cadastrar-card',
   templateUrl: './cadastrar-card.page.html',
@@ -27,12 +28,13 @@ export class CadastrarCardPage implements OnInit {
       this._cardService.cadastrar(newCard)
       this._baralhoService.adicionarCardPorId(this._idBaralhoEscolhido, newCard.getId())
       console.log('cadastrado ', this._baralhoService.getBaralhoPorId(this._idBaralhoEscolhido))
+      this.router.navigate(['show-card'])
     }else{
       
       console.log("preencha todos os campos ")
     } 
   }
-  constructor(private _cardService : CardService, private _baralhoService : BaralhoService) { }
+  constructor(private _cardService : CardService, private _baralhoService : BaralhoService, private router: Router) { }
   public validate() : boolean{
     return this._pergunta.trim() != "" && this._resposta.trim() != "" && 
     this._idBaralhoEscolhido !== -1 && this._dificuldade !== '-1'

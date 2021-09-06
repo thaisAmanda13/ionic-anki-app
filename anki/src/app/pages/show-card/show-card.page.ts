@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from 'src/app/class/card';
 import { CardService } from 'src/app/services/card.service';
-
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-show-card',
   templateUrl: './show-card.page.html',
@@ -14,8 +14,8 @@ export class ShowCardPage implements OnInit {
   private _fim : boolean = false
   private _card : Card = this._cards[this._cardAtualIndex]
 
-  constructor(private cardService : CardService) {
-    console.log(this._cards)
+  constructor(private cardService : CardService, private _userService : UserService) {
+    console.log(this._userService.getUser())
   }
 
   setFeedback(idDificuldade){

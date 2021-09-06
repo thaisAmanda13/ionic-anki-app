@@ -9,7 +9,7 @@ export class UserService {
 
   constructor() { 
 
-    this._user= new User('Temporario', new Date()) 
+    // this._user= new User('Temporario', new Date()) 
   }
 
   public createUser(name:string, birthDate:Date){
