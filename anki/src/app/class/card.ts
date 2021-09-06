@@ -4,7 +4,7 @@ export class Card {
     private _visto : boolean
     private _dataRevisao : Date
     private _dificuldade : number
-    private _categoriaCard : number
+
     private _id : number 
 
     constructor(  
@@ -13,18 +13,20 @@ export class Card {
         _visto : boolean,
         _dataRevisao : Date,
         _dificuldade : number,
-        _categoriaCard : number,
+   
         
     ) {
+       
         this._pergunta = _pergunta 
         this._resposta = _resposta 
-        this._visto  = _visto 
+        this._visto  = _visto || false
         this._dataRevisao = _dataRevisao 
         this._dificuldade = _dificuldade 
-        this._categoriaCard = _categoriaCard 
         this._id = new Date().getTime()
-    }
+    
 
+    }
+    
     public setPergunta(_pergunta : string): void {
         this._pergunta = _pergunta
     }
@@ -42,9 +44,7 @@ export class Card {
     public setDificuldade(_dificuldade : number) : void{
         this._dificuldade = _dificuldade
     }
-    public setCategoriaCard(_categoriaCard : number) : void{
-        this._categoriaCard = _categoriaCard
-    }
+
 
     public getPergunta() : string {
         return this._pergunta 
@@ -67,7 +67,5 @@ export class Card {
     public getDificuldade() : number {
         return this._dificuldade 
     }
-    public getCategoriaCard() : number {
-        return this._categoriaCard 
-    }
+  
 }

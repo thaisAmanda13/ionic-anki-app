@@ -48,19 +48,19 @@
       <ion-list>
 
         <ion-item>
-          <ion-icon name="people-outline" slot="start"></ion-icon>
+          <ion-icon name="help-outline" slot="start"></ion-icon>
           <ion-label expand="block" position="floating">Pergunta</ion-label>
           <ion-input placeholder="Nome Sobrenome" type="text" [(ngModel)]="_pergunta"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-icon name="people-outline" slot="start"></ion-icon>
+          <ion-icon name="alert-outline" slot="start"></ion-icon>
           <ion-label expand="block" position="floating">Resposta</ion-label>
           <ion-input placeholder="Nome Sobrenome" type="text" [(ngModel)]="_resposta"></ion-input>
         </ion-item>
         
         <ion-item>
-          <ion-label><ion-icon name="transgender-outline"></ion-icon>Dificuldade</ion-label>
+          <ion-label><ion-icon name="barbell-outline"></ion-icon>Dificuldade</ion-label>
           
           <ion-select placeholder="Selecionar" [(ngModel)] = "_dificuldade">
             <ion-select-option value="3">Fácil</ion-select-option>
@@ -69,11 +69,13 @@
           
         </ion-item>
 
+      
+
         <ion-item>
-          <ion-label><ion-icon name="transgender-outline"></ion-icon>Categoria</ion-label>
+          <ion-label><ion-icon name="flag-outline"></ion-icon>Baralho</ion-label>
           
-          <ion-select placeholder="Selecionar" [(ngModel)] = "_categoria">
-            <ion-select-option value="3">Inglês flash cards</ion-select-option>
+          <ion-select placeholder="Selecionar" [(ngModel)] = "_idBaralhoEscolhido"  >
+            <ion-select-option *ngFor= "let baralho of _baralhos" value="{{baralho.getId()}}">{{baralho.getNome()}}</ion-select-option>
             
           </ion-select>
           

@@ -15,7 +15,7 @@ export class ShowCardPage implements OnInit {
   private _card : Card = this._cards[this._cardAtualIndex]
 
   constructor(private cardService : CardService) {
-    console.log(this._card)
+    console.log(this._cards)
   }
 
   setFeedback(idDificuldade){
