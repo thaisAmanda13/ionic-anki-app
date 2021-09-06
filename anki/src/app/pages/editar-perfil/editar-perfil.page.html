@@ -1,9 +1,46 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>editar-perfil</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      <ion-icon name="person-add-outline"></ion-icon> Editar Perfil
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <form [formGroup]="formEditUser" (ngSubmit)="editarUser()" novalidate>
+    <ion-card>
+      <ion-card-header>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="people-outline" slot="start"></ion-icon>
+            <ion-label expand="block" position="floating">Nome</ion-label>
+            <ion-input placeholder="Nome Sobrenome" type="text" formControlName="_name"></ion-input>
+            <span *ngIf="isSubmitted && errorControl.nome.errors?.required">
+              Nome é obrigatório
+            </span>
+          </ion-item>
+
+          <ion-item>
+            <ion-icon name="calendar-outline" slot="start"></ion-icon>
+            <ion-label position="left">Data de Nascimento</ion-label>
+            <ion-input type="date" formControlName="_birthDate"></ion-input>
+            <span *ngIf="isSubmitted && errorControl.nome.errors?.required">
+              Este campo é obrigatório
+            </span>
+          </ion-item>
+        </ion-list>
+      </ion-card-header>
+    </ion-card>
+  </form>
+  <ion-content>
+    <ion-item>
+      <ion-col size="9">
+        <ion-row>
+          <ion-button expand="block" color="danger" (click)="cancelar()">Cancelar</ion-button>
+          <ion-button expand="block" color="success" (click)="cadastrarUsuario()">Salvar</ion-button>
+        </ion-row>
+      </ion-col>
+    </ion-item>
+  </ion-content>
 </ion-content>

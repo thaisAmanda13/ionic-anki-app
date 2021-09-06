@@ -7,7 +7,7 @@ import {CardService} from '../../services/card.service'
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  private _logado : boolean = false
+  private _logado : boolean = true
   private _countCardsRevisao : number = 0
   constructor(private _userService: UserService, private _cardService: CardService) {
     if(this._userService.getUser() != null){
