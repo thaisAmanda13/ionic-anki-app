@@ -3,7 +3,7 @@ export class Baralho {
     _id : number
     _nome : string
     _categoria : string
-    _listaCards : Card[]
+   private _listaCards : Card[] = []
     constructor(nome:string,categoria:string){
         this._id = new Date().getTime()
         this.setNome(nome)

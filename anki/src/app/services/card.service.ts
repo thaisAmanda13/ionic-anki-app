@@ -7,12 +7,16 @@ export class CardService {
   private _cards : Card[] = []
   private _cardsRevisao : Card[] = []
   constructor() {
-    this._cards.push(new Card('aaaa', 'bbbbbb',false, new Date(), 1, 1))
+    this._cards.push(new Card('aaaa', 'bbbbbb',false, new Date(), 1))
     // this._cards.push(new Card('a332', 'bb33bb',false, new Date(), 1, 1))
     // this._cards.push(new Card('a444a', 'bbsabb',false, new Date(), 1, 1))
     // this._cards.push(new Card('aa33aa', 'bbsbbbb',false, new Date(), 1, 1))
   }
- 
+
+  public getCards(): Card[]{
+    return this._cards
+  }
+
   public getCardsRevisao() : Card[]{
     
     for(let i = 0; i < this._cards.length; i ++){
@@ -38,7 +42,7 @@ export class CardService {
         this._cards[i].setVisto(cardEditado.getVisto())
         this._cards[i].setDataRevisao(cardEditado.getDataRevisao())
         this._cards[i].setDificuldade(cardEditado.getDificuldade())
-        this._cards[i].setCategoriaCard(cardEditado.getCategoriaCard())
+
         return true
       }
     }

@@ -2,14 +2,19 @@ import { Injectable } from '@angular/core';
 import { Card } from '../class/card';
 import { Baralho } from '../class/Baralho'
 import { CardService } from 'src/app/services/card.service';
+import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 @Injectable({
   providedIn: 'root'
 })
 export class BaralhoService {
   private _listaBaralho : Baralho[]=[]
   private _cards : Card[]=[]
-  private cardService : CardService
-  constructor() { }
+  
+  constructor(private cardService : CardService) { 
+
+    this._listaBaralho.push(new Baralho('Default','Ingles'))
+    this._listaBaralho.push(new Baralho('Baralhos 2','frances'))
+  }
 
   
   public cadastrar(nome:string,categoria:string):Baralho{
@@ -43,11 +48,14 @@ export class BaralhoService {
   }
 
   public adicionarCardPorId(idBaralho:number,idCard:number):void{
-    let _baralho=this.getBaralhoPorId(idBaralho)
-    let _card=this.cardService.getCardPorId(idCard)
-    if(_baralho!=null && _card!=null)
+    // console.log(this.getBaralhoPorId(idBaralho), this.cardService.getCardPorId(idCard))
+    var _baralho=this.getBaralhoPorId(idBaralho)
+    var _card=this.cardService.getCardPorId(idCard)
+   
+    if(_baralho!=null && _card!=null){
+      
       _baralho.addCard(_card)
-    else
+    }else
       throw"Baralho ou Card Não encontrado"
   }
 
