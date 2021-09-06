@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from 'src/app/class/card';
 import { CardService } from 'src/app/services/card.service';
-import { User } from './../../class/User';
 
 @Component({
   selector: 'app-show-card',
@@ -18,11 +17,13 @@ export class ShowCardPage implements OnInit {
   constructor(private cardService : CardService) {
     console.log(this._card)
   }
+
   setFeedback(idDificuldade){
     this.cardService.setFeedback(this._card.getId(), idDificuldade)
     this._showResposta = false
     this.proximoCard()
   }
+
   proximoCard(): void {
     
     if(this._cardAtualIndex < this._cards.length -1){
@@ -33,9 +34,11 @@ export class ShowCardPage implements OnInit {
       this._fim = true
     }
   }
+
   ngOnInit() {
   }
-  showResposta(){
+
+  showResposta() {
     this._showResposta = true
   }
 }
