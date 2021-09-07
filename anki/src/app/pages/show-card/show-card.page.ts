@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Card } from 'src/app/class/card';
 import { CardService } from 'src/app/services/card.service';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-show-card',
   templateUrl: './show-card.page.html',
@@ -13,8 +14,8 @@ export class ShowCardPage implements OnInit {
   private _cardAtualIndex : number = 0
   private _fim : boolean = false
   private _card : Card = this._cards[this._cardAtualIndex]
-
-  constructor(private cardService : CardService, private _userService : UserService) {
+  
+  constructor(private cardService : CardService, private _userService : UserService, private router: Router) {
     console.log(this._userService.getUser())
   }
 
@@ -40,5 +41,9 @@ export class ShowCardPage implements OnInit {
 
   showResposta() {
     this._showResposta = true
+  }
+
+  public redirect(route : string){
+    this.router.navigate([route])
   }
 }

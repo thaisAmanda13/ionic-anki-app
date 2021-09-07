@@ -7,24 +7,26 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item href="/">
+      
+        <ion-item (click)="redirect('home')">
           <ion-icon slot="start" name="home-outline"></ion-icon>
           <ion-label >Home </ion-label>
         </ion-item>
-        <ion-item href="editar-perfil">
+        <ion-item (click)="redirect('editar-perfil')">
           <ion-icon slot="start" name="person-circle-outline"></ion-icon>
           <ion-label >Editar perfil </ion-label>
         </ion-item>
-        <ion-item href="/show-card">
+  
+        <ion-item (click)="redirect('show-card')">
           <ion-icon slot="start" name="albums-outline"></ion-icon>
           <ion-label>Revisar cards</ion-label>
         </ion-item>
       
-        <ion-item href="/cadastrar-card">
+        <ion-item (click)="redirect('cadastrar-card')">
           <ion-icon slot="start" name="add-circle-outline"></ion-icon>
           <ion-label>Novo card</ion-label>
         </ion-item>
-       
+      
       </ion-list>
     </ion-content>
   </ion-menu>
@@ -60,7 +62,8 @@
         </ion-card-header>
       
         <ion-card-content>
-          <p>Total de cards para revisão hoje: {{_countCardsRevisao}}</p>
+          <!-- <p>Total de cards para revisão hoje: {{_countCardsRevisao}}</p> -->
+          <p> Alguma coisa aqui</p>
         </ion-card-content>
       </ion-card>
     </ion-content>

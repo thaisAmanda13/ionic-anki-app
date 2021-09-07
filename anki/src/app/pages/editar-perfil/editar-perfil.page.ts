@@ -50,4 +50,7 @@ export class EditarPerfilPage implements OnInit {
       this.router.navigate(['home'])
     }
   }
+  public redirect(route : string){
+    this.router.navigate([route])
+  }
 }

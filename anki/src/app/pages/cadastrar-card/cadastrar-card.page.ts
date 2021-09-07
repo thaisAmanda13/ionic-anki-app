@@ -18,8 +18,8 @@ export class CadastrarCardPage implements OnInit {
   public _idBaralhoEscolhido : number = -1
 
   public cadastrar(): void{
-    const data = new Date()
-    const dataRevisao = new Date(data.setDate(data.getDate())) 
+   
+    const dataRevisao = new Date() 
     
     if(this.validate()){
       
@@ -28,18 +28,24 @@ export class CadastrarCardPage implements OnInit {
       this._cardService.cadastrar(newCard)
       this._baralhoService.adicionarCardPorId(this._idBaralhoEscolhido, newCard.getId())
       console.log('cadastrado ', this._baralhoService.getBaralhoPorId(this._idBaralhoEscolhido))
-      this.router.navigate(['show-card'])
+      // this.router.navigate(['show-card'])
     }else{
       
       console.log("preencha todos os campos ")
     } 
   }
+
   constructor(private _cardService : CardService, private _baralhoService : BaralhoService, private router: Router) { }
+  
+  
   public validate() : boolean{
     return this._pergunta.trim() != "" && this._resposta.trim() != "" && 
     this._idBaralhoEscolhido !== -1 && this._dificuldade !== '-1'
   }
  
+  public redirect(route : string){
+    this.router.navigate([route])
+  }
   ngOnInit() {
   }
 
