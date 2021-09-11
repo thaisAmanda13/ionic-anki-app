@@ -12,8 +12,9 @@ export class BaralhoService {
   
   constructor(private cardService : CardService) { 
 
-    this._listaBaralho.push(new Baralho('Default','Ingles'))
-    this._listaBaralho.push(new Baralho('Baralhos 2','frances'))
+    this._listaBaralho.push(new Baralho('Idiomas','Ingles'))
+    this._listaBaralho.push(new Baralho('Engenharia de Software','frances'))
+  
   }
 
   

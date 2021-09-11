@@ -58,12 +58,26 @@
   <ion-list class="list">
     <ion-item-group  *ngFor="let baralho of _lista_baralhos">
       <ion-grid color="medium"> 
-        <ion-row><ion-col size="12">
-          <ion-item lines="none" color="medium">Nome: {{baralho.getNome()}}</ion-item>
-          <ion-button color="secondary" (click)="cards(baralho.getId())">Cards</ion-button>
-          <ion-button color="success" (click)="alterar(baralho.getId())">alterar</ion-button>
-          <ion-button color="danger" (click)="excluir(baralho.getId())">excluir</ion-button>
-        </ion-col></ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-card horizontal="center">
+              <ion-item lines="none">Nome: {{baralho.getNome()}}</ion-item>
+
+              <ion-row>
+                <ion-col  size="4">
+                  <ion-button horizontal="center" color="secondary" (click)="cards(baralho.getId())">Cards</ion-button>
+                </ion-col>
+                <ion-col  size="4">
+                  <ion-button color="success" (click)="alterar(baralho.getId())">Alterar</ion-button>
+                </ion-col>
+                <ion-col  size="4">
+                  <ion-button color="danger" (click)="excluir(baralho.getId())">Excluir</ion-button>
+                </ion-col>
+              </ion-row>
+              
+            </ion-card>
+          </ion-col>
+        </ion-row>
       </ion-grid>
     </ion-item-group>
   </ion-list>

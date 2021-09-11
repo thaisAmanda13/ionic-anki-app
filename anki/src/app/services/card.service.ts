@@ -7,8 +7,8 @@ export class CardService {
   private _cards : Card[] = []
   private _cardsRevisao : Card[] = []
   constructor() {
-    this._cards.push(new Card('aaaa', 'bbbbbb',false, new Date(), 1))
-    // this._cards.push(new Card('a332', 'bb33bb',false, new Date(), 1, 1))
+    this._cards.push(new Card('Comandos para execução de chamadas assincronas no Javascript', 'Async/Await',false, new Date(), 1))
+    this._cards.push(new Card('Stacks suportadas pelo ionic', 'Vue.js, React e Angular',false, new Date(), 1))
     // this._cards.push(new Card('a444a', 'bbsabb',false, new Date(), 1, 1))
     // this._cards.push(new Card('aa33aa', 'bbsbbbb',false, new Date(), 1, 1))
   }

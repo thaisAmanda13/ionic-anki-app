@@ -8,17 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  private _logado : boolean = false
-  // private _countCardsRevisao : number = this._cardService.getCardsRevisao().length
-  // ngOnInit() {
-    
-  // }
-  constructor(private _userService: UserService, private _cardService: CardService, private router: Router) {
+  private _logado : boolean = this._userService.getUser() != null
+  
+  constructor(private _userService: UserService,private router: Router) {
    
-    this._logado =  this._userService.getUser() != null
-      
-    
-
   }
   public redirect(route : string){
     this.router.navigate([route])
