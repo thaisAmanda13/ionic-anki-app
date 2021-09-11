@@ -2,7 +2,7 @@
 
   <ion-header>
     <ion-toolbar translucent>
-      <ion-title>Meus Cards <ion-icon name="copy-outline"></ion-icon></ion-title>
+      <ion-title>Novo Baralho <ion-icon name="copy-outline"></ion-icon></ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -23,7 +23,7 @@
         <ion-label>Revisar cards</ion-label>
       </ion-item>
       
-      <ion-item (click)="redirect('baralhos')">
+      <ion-item (click)="redirect('show-card')">
         <ion-icon slot="start" name="albums-outline"></ion-icon>
         <ion-label>Baralhos</ion-label>
       </ion-item>  
@@ -58,37 +58,23 @@
 
         <ion-item>
           <ion-icon name="help-outline" slot="start"></ion-icon>
-          <ion-label expand="block" position="floating">Pergunta</ion-label>
-          <ion-input type="text" [(ngModel)]="_pergunta"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-icon name="alert-outline" slot="start"></ion-icon>
-          <ion-label expand="block" position="floating">Resposta</ion-label>
-          <ion-input type="text" [(ngModel)]="_resposta"></ion-input>
+          <ion-label expand="block" position="floating">Nome do baralho</ion-label>
+          <ion-input type="text" [(ngModel)]="_nome"></ion-input>
         </ion-item>
         
         <ion-item>
-          <ion-label><ion-icon name="barbell-outline"></ion-icon> Dificuldade</ion-label>
+          <ion-label><ion-icon name="barbell-outline"></ion-icon> Categoria do baralho</ion-label>
           
-          <ion-select placeholder="Selecionar" [(ngModel)] = "_dificuldade">
-            <ion-select-option value="3">Fácil</ion-select-option>
-            <ion-select-option value="2">Dificil</ion-select-option>
+          <ion-select placeholder="Selecionar" [(ngModel)] = "_categoria">
+            <ion-select-option value="Programação">Programação</ion-select-option>
+            <ion-select-option value="Engenharia de software">Engenharia de software</ion-select-option>
+            <ion-select-option value="Biologia">Biologia</ion-select-option>
+            <ion-select-option value="Psicologia">Psicologia</ion-select-option>
+
           </ion-select>
           
         </ion-item>
 
-      
-
-        <ion-item>
-          <ion-label><ion-icon name="flag-outline"></ion-icon> Baralho</ion-label>
-          
-          <ion-select placeholder="Selecionar" [(ngModel)] = "_idBaralhoEscolhido"  >
-            <ion-select-option *ngFor= "let baralho of _baralhos" value="{{baralho.getId()}}">{{baralho.getNome()}}</ion-select-option>
-            
-          </ion-select>
-          
-        </ion-item>
 
       </ion-list>
     </ion-card-header>
@@ -98,9 +84,14 @@
 
 <ion-content>
   <ion-item>
-    <ion-col size="9">
+    <ion-col size="8">
       <ion-row>
         <ion-button expand="block" color="success" (click)="cadastrar()">Salvar</ion-button>
+      </ion-row>
+    </ion-col>
+    <ion-col size="8">
+      <ion-row>
+        <ion-button expand="block" color="danger" (click)="redirect('baralhos')">Cancelar</ion-button>
       </ion-row>
     </ion-col>
   </ion-item>

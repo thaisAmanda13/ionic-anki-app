@@ -26,6 +26,28 @@ const routes: Routes = [
     path: 'cadastrar-card',
     loadChildren: () => import('./pages/cadastrar-card/cadastrar-card.module').then(m => m.CadastrarCardPageModule)
   },
+  {
+    path: 'baralhos',
+    loadChildren: () => import('./pages/baralhos/baralhos.module').then( m => m.BaralhosPageModule)
+  },
+  {
+    path: 'cadastro-baralho',
+    loadChildren: () => import('./pages/cadastro-baralho/cadastro-baralho.module').then( m => m.CadastroBaralhoPageModule)
+  },
+  {
+    path: 'editar-baralho',
+    loadChildren: () => import('./pages/editar-baralho/editar-baralho.module').then( m => m.EditarBaralhoPageModule)
+  },  {
+    path: 'cards-por-baralho',
+    loadChildren: () => import('./pages/cards-por-baralho/cards-por-baralho.module').then( m => m.CardsPorBaralhoPageModule)
+  },
+  {
+    path: 'editar-card',
+    loadChildren: () => import('./pages/editar-card/editar-card.module').then( m => m.EditarCardPageModule)
+  },
+
+
+
 
 
 ];

@@ -1,10 +1,12 @@
-<ion-app>
-  <ion-menu side="start" content-id="main-content"  *ngIf="_logado">
+  
+  <ion-menu side="start" content-id="main-content" >
+
     <ion-header>
       <ion-toolbar translucent>
-        <ion-title>Menu</ion-title>
+        <ion-title>Meus Cards <ion-icon name="copy-outline"></ion-icon></ion-title>
       </ion-toolbar>
-    </ion-header>
+    </ion-header> 
+
     <ion-content>
       <ion-list>
       
@@ -21,56 +23,52 @@
           <ion-icon slot="start" name="albums-outline"></ion-icon>
           <ion-label>Revisar cards</ion-label>
         </ion-item>
+        
         <ion-item (click)="redirect('baralhos')">
           <ion-icon slot="start" name="albums-outline"></ion-icon>
           <ion-label>Baralhos</ion-label>
-        </ion-item>     
+        </ion-item>   
+      
         <ion-item (click)="redirect('cadastrar-card')">
           <ion-icon slot="start" name="add-circle-outline"></ion-icon>
           <ion-label>Novo card</ion-label>
         </ion-item>
-
       
       </ion-list>
     </ion-content>
-  </ion-menu>
+
+
+    
+ </ion-menu> 
 
   <div class="ion-page" id="main-content">
     <ion-header>
+
       <ion-toolbar>
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>Anki-Clone</ion-title>
       </ion-toolbar>
+
     </ion-header>
     
-    <ion-content *ngIf="!_logado">
-      <ion-card>
-        <ion-card-header>
-          
-          <ion-card-title>Crie uma conta no Anki-clone</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          <ion-button href="/cadastrar-usuario" >Criar conta</ion-button>
-        </ion-card-content>
-      </ion-card>
-    </ion-content>
-
-    <ion-content *ngIf="_logado">
-      <ion-card>
-        <ion-card-header>
-          
-          <ion-card-title>Agenda de Hoje</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          <!-- <p>Total de cards para revisão hoje: {{_countCardsRevisao}}</p> -->
-          <p> Alguma coisa aqui</p>
-        </ion-card-content>
-      </ion-card>
-    </ion-content>
-
-  </div>
-</ion-app>
+    
+<ion-content>
+  <ion-list class="list">
+    <ion-item-group  *ngFor="let card of _baralho.getListaCards()">
+      <ion-grid color="medium"> 
+        <ion-row><ion-col size="12">
+          <ion-item lines="none" color="medium">Nome: {{card.getPergunta()}}</ion-item>
+          <ion-button color="secondary" (click)="alterar(card.getId())">alterar</ion-button>
+          <ion-button color="danger" (click)="excluir(card.getId())">excluir</ion-button>
+        </ion-col></ion-row>
+      </ion-grid>
+    </ion-item-group>
+  </ion-list>
+</ion-content>
+<ion-fab vertical="bottom" horizontal="start" slot="fixed">
+  <ion-fab-button color="success" (click)="redirect('cadastro-card')">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

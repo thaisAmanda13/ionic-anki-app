@@ -22,6 +22,22 @@ export class BaralhoService {
     this._listaBaralho.push(_baralho)
     return _baralho
   }
+  public excluir(id):void{
+    for(let i = 0;  i < this._listaBaralho.length; i++){
+      if((this._listaBaralho[i].getId() == id)){
+        this._listaBaralho.splice(i,1)
+      }
+    }
+  }
+
+  public removeCard(idBaralho:number,idCard:number):void{
+    let baralho=this.getBaralhoPorId(idBaralho)
+    for(let i = 0;  i < baralho.getListaCards().length; i++){
+      if((baralho.getListaCards()[i].getId() == idCard)){
+        baralho.getListaCards().splice(i,1)
+      }
+    }
+  }
   public adicionarBaralho(baralho:Baralho):void{
     this._listaBaralho.push(baralho)
   }
@@ -59,7 +75,7 @@ export class BaralhoService {
       throw"Baralho ou Card Não encontrado"
   }
 
-  public editar(idBaralho,nome,categoria){
+  public editar(idBaralho,nome,categoria):void{
     let _baralho = this.getBaralhoPorId(idBaralho)
     if(_baralho!=null){
       _baralho.setNome(nome)
