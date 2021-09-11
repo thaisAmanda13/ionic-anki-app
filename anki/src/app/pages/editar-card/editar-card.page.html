@@ -78,17 +78,6 @@
           
         </ion-item>
 
-      
-
-        <ion-item>
-          <ion-label><ion-icon name="flag-outline"></ion-icon> Baralho</ion-label>
-          
-          <ion-select placeholder="Selecionar" [(ngModel)] = "_idBaralhoEscolhido"  >
-            <ion-select-option *ngFor= "let baralho of _baralhos" value="{{baralho.getId()}}">{{baralho.getNome()}}</ion-select-option>
-            
-          </ion-select>
-          
-        </ion-item>
 
       </ion-list>
     </ion-card-header>
@@ -100,7 +89,7 @@
   <ion-item>
     <ion-col size="9">
       <ion-row>
-        <ion-button expand="block" color="success" (click)="cadastrar()">Salvar</ion-button>
+        <ion-button expand="block" color="success" (click)="editar()">Salvar</ion-button>
       </ion-row>
     </ion-col>
   </ion-item>

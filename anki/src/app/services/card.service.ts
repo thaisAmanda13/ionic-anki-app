@@ -71,6 +71,19 @@ export class CardService {
     }
   }
 
+  public excluir(id):void{
+    for(let i = 0;  i < this._cards.length; i++){
+      if((this._cards[i].getId() == id)){
+        this._cards.splice(i,1)
+      }
+    }
+    for(let i = 0;  i < this._cardsRevisao.length; i++){
+      if((this._cardsRevisao[i].getId() == id)){
+        this._cardsRevisao.splice(i,1)
+      }
+    }
+  }
+
   getCardPorId(idCard):Card{
     for(let i = 0;  i < this._cards.length; i++){
       if(this._cards[i].getId() == idCard)
