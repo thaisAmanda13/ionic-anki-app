@@ -3,21 +3,21 @@ import { AlertController } from "@ionic/angular";
 export class ConfirmAlert {
 
     public alertController: AlertController = new AlertController()
-    async confirm(message = 'Tem certeza?', header) {
+    async confirm(message , header) {
         const alert = await this.alertController.create({
             cssClass: 'my-custom-class',
             header: header,
-            message: `Message <strong>${message}</strong>!!!`,
+            message: `<strong>${message}</strong>`,
             buttons: [
                 {
-                    text: 'Cancel',
+                    text: 'Cancelar',
                     role: 'cancel',
                     cssClass: 'secondary',
                     handler: () => {
                         return false
                     }
                 }, {
-                    text: 'Okay',
+                    text: 'Confirmar',
                     handler: () => {
                         return true
                     }
