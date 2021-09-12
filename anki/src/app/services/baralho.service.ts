@@ -23,10 +23,12 @@ export class BaralhoService {
     this._listaBaralho.push(_baralho)
     return _baralho
   }
-  public excluir(id):void{
+  public excluir(id):boolean
+  {
     for(let i = 0;  i < this._listaBaralho.length; i++){
       if((this._listaBaralho[i].getId() == id)){
         this._listaBaralho.splice(i,1)
+        return true
       }
     }
   }
