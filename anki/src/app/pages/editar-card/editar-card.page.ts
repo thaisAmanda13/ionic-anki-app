@@ -4,6 +4,7 @@ import { Card } from 'src/app/class/card';
 import { CardService } from 'src/app/services/card.service';
 import { BaralhoService } from 'src/app/services/baralho.service';
 import { Router } from '@angular/router';
+import { RegisterAlert } from 'src/app/alerts/registerAlert';
 
 @Component({
   selector: 'app-editar-card',
@@ -11,26 +12,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./editar-card.page.scss'],
 })
 export class EditarCardPage implements OnInit {
-  private _idCard: number
-  private _card: Card
-  private _idBaralho: number
-  public _pergunta: string
-  public _resposta: string
-  public _dificuldade: number
+  private _idCard: number;
+  private _card: Card;
+  private _idBaralho: number;
+  public _pergunta: string;
+  public _resposta: string;
+  public _dificuldade: number;
+  private _alert : RegisterAlert;
 
-
-
-  constructor(private _cardService: CardService, private _baralhoService: BaralhoService, private _router: Router) { }
+  constructor(private _cardService: CardService, 
+              private _baralhoService: BaralhoService, private _router: Router) 
+    {
+      this._alert =  new RegisterAlert();
+    }
 
   public editar(): void {
     if (this.validate()) {
-      let novo_card: Card
-      novo_card = new Card(this._pergunta, this._resposta, this._card.getVisto(), this._card.getDataRevisao(), this._card.getDificuldade())
-      this._cardService.editar(this._card, novo_card)
-      this.returnPage()
-    } else {
-      alert("Dados Invalidos")
-    }
+      let novo_card: Card;
+      novo_card = new Card(this._pergunta, this._resposta, this._card.getVisto(), this._card.getDataRevisao(), this._card.getDificuldade());
+      this._cardService.editar(this._card, novo_card);
+      this._alert.success("Card editado");
+      this.returnPage();
+    } 
+    else 
+      this._alert.error("Dados inválidos!", "Houve um erro ao editar");
   }
   public returnPage(): void {
     this._router.navigateByUrl("/cards-por-baralho",
