@@ -33,7 +33,7 @@ export class CadastrarCardPage implements OnInit {
       console.log('cadastrado ', this._baralhoService.getBaralhoPorId(this._idBaralhoEscolhido))
     }
     else{
-      this.alert.error("erro")
+      this.alert.error("erro", "Parece que você não preencheu campos obrigatórios")
       console.log("preencha todos os campos ")
     } 
   }
