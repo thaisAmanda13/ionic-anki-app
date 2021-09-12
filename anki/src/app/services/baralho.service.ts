@@ -17,7 +17,6 @@ export class BaralhoService {
   
   }
 
-  
   public cadastrar(nome:string,categoria:string):Baralho{
     let _baralho =new Baralho(nome,categoria)
     this._listaBaralho.push(_baralho)
