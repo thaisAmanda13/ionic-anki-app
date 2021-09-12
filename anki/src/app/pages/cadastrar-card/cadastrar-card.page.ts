@@ -30,6 +30,7 @@ export class CadastrarCardPage implements OnInit {
       this._cardService.cadastrar(newCard)
       this._baralhoService.adicionarCardPorId(this._idBaralhoEscolhido, newCard.getId())
       this.alert.success()
+      this.redirect('home')
       console.log('cadastrado ', this._baralhoService.getBaralhoPorId(this._idBaralhoEscolhido))
     }
     else{
