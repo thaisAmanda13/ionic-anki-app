@@ -30,12 +30,13 @@ export class CadastrarCardPage implements OnInit {
       this._cardService.cadastrar(newCard)
       this._baralhoService.adicionarCardPorId(this._idBaralhoEscolhido, newCard.getId())
       this.alert.success()
-      this.redirect('home')
-      console.log('cadastrado ', this._baralhoService.getBaralhoPorId(this._idBaralhoEscolhido))
+      // this.redirect('cadastrar-card')
+      this.cleanFields()
+     
     }
     else{
       this.alert.error("erro", "Parece que você não preencheu campos obrigatórios")
-      console.log("preencha todos os campos ")
+     
     } 
   }
 
@@ -44,7 +45,13 @@ export class CadastrarCardPage implements OnInit {
     this.alert = new RegisterAlert();
   }
   
-  
+  public cleanFields(){
+    this._pergunta =''
+    this._resposta  = ''
+    this._dificuldade  = '-1'
+ 
+    this._idBaralhoEscolhido = -1
+  }
   public validate() : boolean{
     return this._pergunta.trim() != "" && this._resposta.trim() != "" && 
     this._idBaralhoEscolhido !== -1 && this._dificuldade !== '-1'
