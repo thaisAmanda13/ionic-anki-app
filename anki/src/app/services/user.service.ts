@@ -13,7 +13,7 @@ export class UserService {
   }
 
   public createUser(name:string, birthDate:Date){
-    this._user = new User(name, birthDate)
+    // this._user = new User(name, birthDate)
   }
 
   public verifyAge(birthDate:Date)
@@ -29,8 +29,8 @@ export class UserService {
   }
 
   public updateUser(name:string, birthDate:Date){
-    this._user.setName(name);
-    this._user.setBirthDate(birthDate);
+    // this._user.setName(name);
+    // this._user.setBirthDate(birthDate);
   }
 
 }

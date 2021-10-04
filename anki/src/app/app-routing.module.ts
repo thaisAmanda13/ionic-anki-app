@@ -45,6 +45,14 @@ const routes: Routes = [
     path: 'editar-card',
     loadChildren: () => import('./pages/editar-card/editar-card.module').then( m => m.EditarCardPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
 
 
 

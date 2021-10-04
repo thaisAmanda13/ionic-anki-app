@@ -27,14 +27,14 @@ export class EditarPerfilPage implements OnInit {
     // const nav = this.router.getCurrentNavigation()
     // this._user = nav.extras.state.objeto
     
-    this._user = this._userService.getUser()
+    // this._user = this._userService.getUser()
     console.log(this._user)
-    this._formEditUser = this.formBuilder.group({
-      _name: [this._user.getName(), [Validators.required, Validators.minLength(3)]],
-      _birthDate: [this._user.getBirthDate(), [Validators.required]],
+    // this._formEditUser = this.formBuilder.group({
+    //   // _name: [this._user.getName(), [Validators.required, Validators.minLength(3)]],
+    //   _birthDate: [this._user.getBirthDate(), [Validators.required]],
     
 
-    })
+    // })
 
   }
 
@@ -43,12 +43,12 @@ export class EditarPerfilPage implements OnInit {
   }
 
   private async editarUser() {
-    if (await confirm() == true) {
-      this._userService.updateUser(
-        this._formEditUser.value['_name'],
-        this._formEditUser.value['_birthDate'].split('T')[0])
-      this.router.navigate(['home'])
-    }
+    // if (await confirm() == true) {
+    //   this._userService.updateUser(
+    //     this._formEditUser.value['_name'],
+    //     this._formEditUser.value['_birthDate'].split('T')[0])
+    //   this.router.navigate(['home'])
+    // }
   }
   public redirect(route : string){
     this.router.navigate([route])

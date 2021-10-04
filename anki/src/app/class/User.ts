@@ -1,44 +1,44 @@
 import { trimTrailingNulls } from "@angular/compiler/src/render3/view/util"
 
 export class User {
-    private _idUser : number
-    private _name : string
-    private _birthDate: Date
 
+    displayName: string 
+    birthDate: Date
+    email: string
+    uid: string
+   
+    photoURL: string
+    emailVerified : boolean
 
-    constructor(name:string, birthDate:Date){
-        this._idUser = new Date().getTime()
-        this.setName(name)
-        this.setBirthDate(birthDate)
-    }
+ 
 
-    public setName(name:string):void
-    {
-        if(name!=undefined&&name!=null&&name.trim()!="")
-            this._name=name
-        else
-            throw"Valor nulo ou indefinido"
-    }
-    public setBirthDate(birthDate:Date):void
-    {
-        if(birthDate!=null&&birthDate!=undefined)
-            this._birthDate=birthDate
-        else
-            throw"Campo nascimento nulo ou indefinido"
-    }
+    // public setDisplayName(name:string):void
+    // {
+    //     if(name!=undefined&&name!=null&&name.trim()!="")
+    //         this.displayName=name
+    //     else
+    //         throw"Valor nulo ou indefinido"
+    // }
+    // public setBirthDate(birthDate:Date):void
+    // {
+    //     if(birthDate!=null&&birthDate!=undefined)
+    //         this.birthDate=birthDate
+    //     else
+    //         throw"Campo nascimento nulo ou indefinido"
+    // }
 
-    public getId() : number
-    {
-        return this._idUser
-    }
+    // // public getId() : number
+    // // {
+    // //     return this._idUser
+    // // }
 
-    public getName():string
-    {
-        return this._name
-    }
+    // public getDisplayName():string
+    // {
+    //     return this.displayName
+    // }
 
-    public getBirthDate():Date
-    {
-        return this._birthDate
-    }
+    // public getBirthDate():Date
+    // {
+    //     return this.birthDate
+    // }
 }
