@@ -37,7 +37,8 @@ const routes: Routes = [
   {
     path: 'editar-baralho',
     loadChildren: () => import('./pages/editar-baralho/editar-baralho.module').then( m => m.EditarBaralhoPageModule)
-  },  {
+  },
+  {
     path: 'cards-por-baralho',
     loadChildren: () => import('./pages/cards-por-baralho/cards-por-baralho.module').then( m => m.CardsPorBaralhoPageModule)
   },
@@ -47,12 +48,9 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
-  {
-    path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
+ 
 
 
 

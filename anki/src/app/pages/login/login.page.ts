@@ -5,9 +5,9 @@ import { AlertController } from '@ionic/angular';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import {RegisterAlert} from '../../alerts/registerAlert'
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.page.html',
-  styleUrls: ['./signin.page.scss'],
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
   private _formLogar : FormGroup
@@ -71,6 +71,6 @@ export class LoginPage implements OnInit {
 
   }
   private _irParaSignUp() : void {
-    this.router.navigate(['signup'])
+    // this.router.navigate(['signup'])
   }
 }

@@ -4,6 +4,8 @@ import {AngularFirestore, AngularFirestoreDocument} from  '@angular/fire/firesto
 import { Router } from '@angular/router';
 import { auth } from 'firebase';
 import { User } from '../class/User';
+import { UserInfo } from '../class/UserInfo';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +45,9 @@ export class AuthServiceService {
     public AuthLogin(provider){
       return this.ngFireAuth.signInWithPopup(provider)
       .then( (result) => {
+        
+        this.serUserData(result.user) //
+
         this.ngZone.run(() => {
           this.router.navigate(['home'])
         })
@@ -56,7 +61,7 @@ export class AuthServiceService {
       const userRef : AngularFirestoreDocument<any> = 
       this.afStore.doc(`users/${user.uuid}`)
       const userDataConst : User = {
-        birthDate:user.birthDate,
+        // birthDate:user.birthDate,
         uid: user.uid,
         email: user.email,
         displayName: user.displayName,

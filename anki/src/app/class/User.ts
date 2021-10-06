@@ -3,7 +3,7 @@ import { trimTrailingNulls } from "@angular/compiler/src/render3/view/util"
 export class User {
 
     displayName: string 
-    birthDate: Date
+    // birthDate: Date
     email: string
     uid: string
    

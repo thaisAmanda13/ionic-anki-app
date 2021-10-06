@@ -9,10 +9,11 @@ import { RegisterAlert } from 'src/app/alerts/registerAlert';
   styleUrls: ['./cadastrar-usuario.page.scss'],
 })
 export class CadastrarUsuarioPage implements OnInit {
-  private _name: string;
-  private _birthDate: Date;
+  private name: string;
+  private birthDate: Date;
   private _alert: RegisterAlert;
-
+  private password : string;
+  private email : string;
   constructor(private router: Router, private UserService: UserService) 
   {
     this._alert = new RegisterAlert();
@@ -22,15 +23,24 @@ export class CadastrarUsuarioPage implements OnInit {
   }
   cadastrarUsuario() :void
   {
-    if (this.UserService.verifyAge(this._birthDate)){
-      this.UserService.createUser(this._name, this._birthDate);
-      this._alert.success("Sucesso ao cadastrar");
-      this.router.navigate(['home']);
+    if (this.UserService.verifyAge(this.birthDate)){
+      try{
+        this.UserService.createUser(this.email,this.password, this.birthDate, this.name);
+        this._alert.success("Sucesso ao cadastrar");
+        this.router.navigate(['home']);
+      }
+      catch(err){
+        this._alert.error("Ocorreu algum erro")
+      }
+      
+     
     }
     else
       this._alert.error("Erro ao cadastrar-se");
   }
 
+
+ 
   cancelar(): void 
   {
     this.router.navigate(['home']);
