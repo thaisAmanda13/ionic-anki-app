@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../class/User';
 import { UserService } from 'src/app/services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserInfo } from 'src/app/class/UserInfo';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class EditarPerfilPage implements OnInit {
   private _formEditUser: FormGroup
   private isSubmitted: boolean = false
-  private _user : User 
+  // private _user : User 
+  private userInfo : UserInfo
   private _name : string
   private _birthDate: string
   constructor(
@@ -24,11 +26,11 @@ export class EditarPerfilPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    // const nav = this.router.getCurrentNavigation()
-    // this._user = nav.extras.state.objeto
-    
+    const nav = this.router.getCurrentNavigation()
+    const uuid = nav.extras.state.objeto.uuid
+    console.log(uuid)
     // this._user = this._userService.getUser()
-    console.log(this._user)
+    // console.log(this._user)
     // this._formEditUser = this.formBuilder.group({
     //   // _name: [this._user.getName(), [Validators.required, Validators.minLength(3)]],
     //   _birthDate: [this._user.getBirthDate(), [Validators.required]],
