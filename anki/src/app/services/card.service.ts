@@ -1,36 +1,56 @@
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { Card } from '../class/card'
+import {map} from 'rxjs/operators'
 @Injectable({
   providedIn: 'root'
 })
 export class CardService {
   private _cards : Card[] = []
   private _cardsRevisao : Card[] = []
-  constructor() {
-    this._cards.push(new Card('Comandos para execução de chamadas assincronas no Javascript', 'Async/Await',false, new Date(), 1))
-    this._cards.push(new Card('Stacks suportadas pelo ionic', 'Vue.js, React e Angular',false, new Date(), 1))
-    // this._cards.push(new Card('a444a', 'bbsabb',false, new Date(), 1, 1))
-    // this._cards.push(new Card('aa33aa', 'bbsbbbb',false, new Date(), 1, 1))
-  }
-
-  public getCards(): Card[]{
-    return this._cards
-  }
-
-  public getCardsRevisao() : Card[]{
+  private _PATH : string = 'cards/'
+  constructor(private db: AngularFireDatabase) {
     
-    for(let i = 0; i < this._cards.length; i ++){
+  }
+
+ getCards() {
+   return this.db.list(this._PATH).snapshotChanges().pipe(
+      map((action) => {
+        return action.map((dados) => ({
+          key: dados.payload.key,
+          data: dados.payload.val()
+        }))
+      })
+    );
+    
+    // aux.forEach(data => {
+    //   data.forEach(item => {
+
+    //     arr.push(<Card> item.data)
+      
+    //   })
+    // })
+    // console.log('array', arr)
+    // return arr
+  }
+
+   filterCardsRevisao(allCards : any) {
+    
+
+    for(let i = 0; i < allCards.length; i ++){
    
-      if(new Date(this._cards[i].getDataRevisao()) <= new Date()){
-        this._cardsRevisao.push(this._cards[i])
+      if(new Date(allCards[i].getDataRevisao()) <= new Date()){
+        this._cardsRevisao.push(allCards[i])
       }
     }
 
     return this._cardsRevisao
   }
 
-  public cadastrar(card : Card): void {
-    this._cards.push(card)
+  public cadastrar(card : Card) {
+    
+      return this.db.database.ref(this._PATH).push(card)
+    
   }
   
   public editar(card: Card, cardEditado : Card): boolean{

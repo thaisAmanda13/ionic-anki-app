@@ -21,14 +21,15 @@ export class CadastrarCardPage implements OnInit {
   private alert: RegisterAlert
 
   public cadastrar(): void {
-    const dataRevisao = new Date() 
+    
     
     if(this.validate()){
       
-      const newCard = new Card(this._pergunta, this._resposta, false, dataRevisao, parseInt(this._dificuldade))  
-
-      this._cardService.cadastrar(newCard)
-      this._baralhoService.adicionarCardPorId(this._idBaralhoEscolhido, newCard.getId())
+      const newCard = new Card(this._pergunta, this._resposta, false, new Date().toISOString(), parseInt(this._dificuldade))  
+      console.log(newCard)
+      const resp = this._cardService.cadastrar(newCard)
+      console.log(resp)
+      // this._baralhoService.adicionarCardPorId(this._idBaralhoEscolhido, newCard.getId())
       this.alert.success()
       // this.redirect('cadastrar-card')
       this.cleanFields()
