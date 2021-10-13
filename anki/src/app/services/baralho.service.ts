@@ -3,22 +3,47 @@ import { Card } from '../class/card';
 import { Baralho } from '../class/Baralho'
 import { CardService } from 'src/app/services/card.service';
 import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
+import { AngularFireDatabase } from '@angular/fire/database'
+import { map } from 'rxjs/operators'
+
 @Injectable({
   providedIn: 'root'
 })
 export class BaralhoService {
   private _listaBaralho : Baralho[]=[]
   private _cards : Card[]=[]
-  
-  constructor(private cardService : CardService) { 
+  private _PATH : string = 'baralhos/'
+  constructor(private db : AngularFireDatabase ,private cardService : CardService) { 
 
     this._listaBaralho.push(new Baralho('Idiomas','Ingles'))
     this._listaBaralho.push(new Baralho('Engenharia de Software','frances'))
   
   }
 
+  createBaralho(baralho : Baralho){
+    return this.db.database.ref(this._PATH).push(baralho)
+  }
+
+  editBaralho(key : any, baralho : Baralho){
+    return this.db.database.ref(this._PATH).child(key).update
+  }
+
+  getBaralhosDB(){
+    return this.db.list(this._PATH).snapshotChanges().pipe(
+      map((action) => {
+        return action.map((dados) => ({
+          key: dados.payload.key,
+          data: dados.payload.val()
+        }))
+      })
+    )
+  }
+
+
+
   public cadastrar(nome:string,categoria:string):Baralho{
     let _baralho =new Baralho(nome,categoria)
+    this.createBaralho(_baralho)
     this._listaBaralho.push(_baralho)
     return _baralho
   }
