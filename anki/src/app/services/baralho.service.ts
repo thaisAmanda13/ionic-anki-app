@@ -14,9 +14,6 @@ export class BaralhoService {
   private _cards : Card[]=[]
   private _PATH : string = 'baralhos/'
   constructor(private db : AngularFireDatabase ,private cardService : CardService) { 
-
-    this._listaBaralho.push(new Baralho('Idiomas','Ingles'))
-    this._listaBaralho.push(new Baralho('Engenharia de Software','frances'))
   
   }
 
@@ -44,7 +41,6 @@ export class BaralhoService {
   public cadastrar(nome:string,categoria:string):Baralho{
     let _baralho =new Baralho(nome,categoria)
     this.createBaralho(_baralho)
-    this._listaBaralho.push(_baralho)
     return _baralho
   }
   public excluir(id):boolean
@@ -68,9 +64,21 @@ export class BaralhoService {
   public adicionarBaralho(baralho:Baralho):void{
     this._listaBaralho.push(baralho)
   }
+  
   public getBaralhos():Baralho[]{
+    this._listaBaralho = []
+    console.log(this._listaBaralho)
+    let baralhos=this.getBaralhosDB()
+    baralhos.forEach(data =>{
+      data.forEach(baralho =>{
+        let _baralho = new Baralho(baralho.data["_nome"], baralho.data["_categoria"])
+        _baralho.setId(baralho.key)
+        this._listaBaralho.push(_baralho)
+      })
+    })
     return this._listaBaralho
   }
+
   public getBaralhoPorId(id):Baralho{
     for(let i = 0;  i < this._listaBaralho.length; i++){
       if((this._listaBaralho[i].getId() == id)){
