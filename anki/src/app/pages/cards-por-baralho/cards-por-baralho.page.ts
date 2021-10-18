@@ -12,7 +12,7 @@ import { CardService } from 'src/app/services/card.service';
 })
 export class CardsPorBaralhoPage implements OnInit {
 
-  private _idBaralho: number
+  private _idBaralho: string
   private _baralho: Baralho
 
   constructor(private _router: Router, private _baralhoService: BaralhoService, private _cardService: CardService) { }

@@ -30,7 +30,7 @@ export class Baralho {
     public addCard(card:Card):void{
         this._listaCards.push(card)
     }
-    public getId():number{
+    public getId():any{
         return this._id
     }
     public getNome():string{

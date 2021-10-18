@@ -17,7 +17,7 @@ export class CadastrarCardPage implements OnInit {
   public _dataRevisao : Date
   public _dificuldade : string = '-1'
   public _baralhos : Baralho[] = this._baralhoService.getBaralhos()
-  public _idBaralhoEscolhido : number = -1
+  public _idBaralhoEscolhido : string = '-1'
   private alert: RegisterAlert
 
   public cadastrar(): void {
@@ -50,11 +50,11 @@ export class CadastrarCardPage implements OnInit {
     this._resposta  = ''
     this._dificuldade  = '-1'
  
-    this._idBaralhoEscolhido = -1
+    this._idBaralhoEscolhido = '-1'
   }
   public validate() : boolean{
     return this._pergunta.trim() != "" && this._resposta.trim() != "" && 
-    this._idBaralhoEscolhido !== -1 && this._dificuldade !== '-1'
+    this._idBaralhoEscolhido !== '-1' && this._dificuldade !== '-1'
   }
 
   public redirect(route : string){
