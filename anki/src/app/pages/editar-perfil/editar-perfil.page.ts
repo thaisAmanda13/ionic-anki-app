@@ -22,7 +22,7 @@ export class EditarPerfilPage implements OnInit {
   private userInfo : UserInfo = new UserInfo(new Date(), 'kkk','kk') 
   private _name : string
   private _birthDate: string
-  public userInfoKey : string
+  public userInfoKey : string = 'msmssm'
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
