@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  private _logado : boolean = this._userService.getUser() != null
+  private _logado : boolean = this._userService.estaLogado()
   
   constructor(private _userService: UserService,private router: Router) {
    
