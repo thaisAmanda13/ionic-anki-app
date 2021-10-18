@@ -29,7 +29,9 @@ export class EditarCardPage implements OnInit {
   public editar(): void {
     if (this.validate()) {
       let novo_card: Card;
-      novo_card = new Card(this._pergunta, this._resposta, this._card.getVisto(), this._card.getDataRevisao(), this._card.getDificuldade());
+      novo_card = new Card(this._pergunta, this._resposta,
+         this._card.getVisto(),
+       this._card.getDataRevisao(), this._card.getDificuldade());
       this._cardService.editar(this._card, novo_card);
       this._alert.success("Card editado");
       this.returnPage();

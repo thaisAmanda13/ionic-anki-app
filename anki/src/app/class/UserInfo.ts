@@ -5,7 +5,6 @@ export class UserInfo {
     constructor(birthDate : Date, uuid:string, name:string){
         this.uuid = uuid;
         this.birthDate = birthDate
-        this.name = name
-        
+        this.name = name    
     }
 }

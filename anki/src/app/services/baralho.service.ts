@@ -73,8 +73,9 @@ export class BaralhoService {
     if(_baralho!=null && _card!=null){
       
       _baralho.addCard(_card)
-    }else
+    }else{
       throw"Baralho ou Card Não encontrado"
+    }
   }
 
   public editar(idBaralho,nome,categoria):void{
