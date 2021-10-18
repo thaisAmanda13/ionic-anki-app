@@ -31,6 +31,7 @@ export class AuthServiceService {
     }
     public signIn(email : string, password : string){
       return this.ngFireAuth.signInWithEmailAndPassword(email, password)
+  
     }
 
     public signUpWithEmailAndPass(email : string, password:string){
@@ -39,7 +40,8 @@ export class AuthServiceService {
     }
 
     public signInWithGoogle(){ 
-      this.AuthLogin(new auth.GoogleAuthProvider())
+       this.AuthLogin(new auth.GoogleAuthProvider())
+     
     }
 
     public AuthLogin(provider){
@@ -47,7 +49,7 @@ export class AuthServiceService {
       .then( (result) => {
         
         this.serUserData(result.user) //
-
+      
         this.ngZone.run(() => {
           this.router.navigate(['home'])
         })
@@ -56,7 +58,7 @@ export class AuthServiceService {
         console.log(error)
       })
     }
-
+    
     public serUserData(user){
       const userRef : AngularFirestoreDocument<any> = 
       this.afStore.doc(`users/${user.uuid}`)
@@ -78,10 +80,10 @@ export class AuthServiceService {
     }
 
     public getUserLogado() : User{
-      const user = JSON.parse(localStorage.getItem('user'))
+      const user =<User> JSON.parse(localStorage.getItem('user'))
       return (user != null) ? user : null
     }
-
+   
     public recuperarSenha(email : string){
       return this.ngFireAuth.sendPasswordResetEmail(email)
       .then( () => {

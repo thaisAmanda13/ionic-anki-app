@@ -32,7 +32,7 @@ export class ShowCardPage implements OnInit {
             c.data._visto,
             c.data._dataRevisao ,
             c.data._dificuldade))
-            console.log(this._cards)
+            
         }
       })
       
