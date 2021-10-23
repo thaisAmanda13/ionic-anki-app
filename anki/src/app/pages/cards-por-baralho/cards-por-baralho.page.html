@@ -56,7 +56,7 @@
     
 <ion-content>
   <ion-list class="list">
-    <ion-item-group  *ngFor="let card of _baralho.getListaCards()">
+    <ion-item-group  *ngFor="let card of _cards">
       <ion-grid color="medium"> 
 
         <ion-row>
@@ -84,7 +84,7 @@
   </ion-list>
 </ion-content>
 <ion-fab vertical="bottom" horizontal="start" slot="fixed">
-  <ion-fab-button color="success" (click)="redirect('cadastro-card')">
+  <ion-fab-button color="success" (click)="redirect('cadastrar-card')">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>

@@ -43,6 +43,7 @@ export class BaralhosPage implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 }

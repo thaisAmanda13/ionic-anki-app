@@ -1,14 +1,18 @@
-import { Card } from '../class/card';
+import { Card } from 'src/app/class/card';
 export class Baralho {
-    _id : number
+    _id : any
     _nome : string
     _categoria : string
-   private _listaCards : Card[] = []
+   private _listaCards : any[] = []
     constructor(nome:string,categoria:string){
-        this._id = new Date().getTime()
         this.setNome(nome)
         this.setCategoria(categoria)
     }
+
+    public setId(id:any):void{
+        this._id=id
+    }
+
     public setNome(nome:string):void
     {
         if(nome!=undefined&&nome!=null&&nome.trim()!="")
@@ -23,10 +27,13 @@ export class Baralho {
         else
             throw"Categoria nulo ou indefinido"
     }
-    public addCard(card:Card):void{
-        this._listaCards.push(card)
+    setListaCards(listaCards : string[]){
+        this._listaCards = listaCards
     }
-    public getId():number{
+    public addCard(idCard : any):void{
+        this._listaCards.push(idCard)
+    }
+    public getId():any{
         return this._id
     }
     public getNome():string{
@@ -35,7 +42,7 @@ export class Baralho {
     public getCategoria():string{
         return this._categoria
     }
-    public getListaCards():Card[]{
+    public getListaCards():string[]{
         return this._listaCards
     }
 }

@@ -12,8 +12,9 @@ import { CardService } from 'src/app/services/card.service';
 })
 export class CardsPorBaralhoPage implements OnInit {
 
-  private _idBaralho: number
+  private _idBaralho: string
   private _baralho: Baralho
+  private _cards: Card []
 
   constructor(private _router: Router, private _baralhoService: BaralhoService, private _cardService: CardService) { }
 
@@ -21,6 +22,7 @@ export class CardsPorBaralhoPage implements OnInit {
     const nav = this._router.getCurrentNavigation()
     this._idBaralho = nav.extras.state.data
     this._baralho = this._baralhoService.getBaralhoPorId(this._idBaralho)
+    this._cards = this._baralhoService.getCardsDoBaralhoPorBaralho(this._idBaralho)
   }
   public alterar(idCard:number):void{
     this._router.navigateByUrl("/editar-card",

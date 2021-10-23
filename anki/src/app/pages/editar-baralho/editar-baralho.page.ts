@@ -10,7 +10,7 @@ import { RegisterAlert } from 'src/app/alerts/registerAlert';
   styleUrls: ['./editar-baralho.page.scss'],
 })
 export class EditarBaralhoPage implements OnInit {
-  private _idBaralho: number
+  private _idBaralho: string
   private _nomeBaralho: string
   private _categoria: string
   private _baralho: Baralho

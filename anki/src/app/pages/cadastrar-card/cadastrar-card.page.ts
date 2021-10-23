@@ -17,19 +17,16 @@ export class CadastrarCardPage implements OnInit {
   public _dataRevisao : Date
   public _dificuldade : string = '-1'
   public _baralhos : Baralho[] = this._baralhoService.getBaralhos()
-  public _idBaralhoEscolhido : number = -1
+  public _idBaralhoEscolhido : string = '-1'
   private alert: RegisterAlert
 
   public cadastrar(): void {
-    
-    
+    const dataRevisao = new Date().toISOString() 
     if(this.validate()){
       
-      const newCard = new Card(this._pergunta, this._resposta, false, new Date().toISOString(), parseInt(this._dificuldade))  
-      console.log(newCard)
-      const resp = this._cardService.cadastrar(newCard)
-      console.log(resp)
-      // this._baralhoService.adicionarCardPorId(this._idBaralhoEscolhido, newCard.getId())
+      const newCard = new Card(this._pergunta, this._resposta, false, dataRevisao, parseInt(this._dificuldade))  
+      let _idCard = this._cardService.cadastrar(newCard)
+      this._baralhoService.adicionarCardPorId(this._idBaralhoEscolhido, _idCard)
       this.alert.success()
       // this.redirect('cadastrar-card')
       this.cleanFields()
@@ -51,11 +48,11 @@ export class CadastrarCardPage implements OnInit {
     this._resposta  = ''
     this._dificuldade  = '-1'
  
-    this._idBaralhoEscolhido = -1
+    this._idBaralhoEscolhido = '-1'
   }
   public validate() : boolean{
     return this._pergunta.trim() != "" && this._resposta.trim() != "" && 
-    this._idBaralhoEscolhido !== -1 && this._dificuldade !== '-1'
+    this._idBaralhoEscolhido !== '-1' && this._dificuldade !== '-1'
   }
 
   public redirect(route : string){

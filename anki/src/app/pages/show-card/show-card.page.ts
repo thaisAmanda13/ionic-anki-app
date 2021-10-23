@@ -16,34 +16,18 @@ export class ShowCardPage implements OnInit {
   private _fim : boolean = false
   private _card : Card
   
-  constructor(private cardService : CardService,private router: Router) {
-
-    this.data = this.cardService.getCards()
-    this._cards = []
-
-    this.data.forEach(data => {
-      const lista = data as Array<any>
-      // this._cards = []
-      lista.forEach(c => {
-       console.log(c.data)
-        if(new Date(c.data._dataRevisao) <= new Date()){
-        
-          this._cards.push(new Card(c.data._pergunta, c.data._resposta,
-            c.data._visto,
-            c.data._dataRevisao ,
-            c.data._dificuldade))
-            
-        }
-      })
-      
-      this._card = this._cards[this._cardAtualIndex]
-    });
+  constructor(private cardService : CardService, private _userService : UserService, private router: Router) {
+    console.log(this._userService.getUser())
+    this.cardService.getCards()
+    this._cards = this.cardService.getCardsRevisao()
+    
+  }
 
   //  console.log('fora do bang', this._cards)
   //   this._cards.push(new Card('vazio','kkk',false, new Date(),0))
       
   
-  }
+  
  
   setFeedback(idDificuldade){
     this.cardService.setFeedback(this._card.getId(), idDificuldade)
