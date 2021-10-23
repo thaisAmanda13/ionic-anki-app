@@ -17,6 +17,9 @@ export class ShowCardPage implements OnInit {
   
   constructor(private cardService : CardService, private _userService : UserService, private router: Router) {
     console.log(this._userService.getUser())
+    this.cardService.getCards()
+    this._cards = this.cardService.getCardsRevisao()
+    
   }
 
   setFeedback(idDificuldade){
